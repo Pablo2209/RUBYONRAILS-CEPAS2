@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_06_002726) do
+ActiveRecord::Schema.define(version: 2021_08_06_004756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "strains", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +33,22 @@ ActiveRecord::Schema.define(version: 2021_08_06_002726) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wines", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "wines_strains", force: :cascade do |t|
+    t.bigint "wine_id"
+    t.bigint "strain_id"
+    t.integer "percentaje"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["strain_id"], name: "index_wines_strains_on_strain_id"
+    t.index ["wine_id"], name: "index_wines_strains_on_wine_id"
+  end
+
+  add_foreign_key "wines_strains", "strains"
+  add_foreign_key "wines_strains", "wines"
 end
