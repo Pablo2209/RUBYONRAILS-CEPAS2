@@ -1,0 +1,2 @@
+class Winemaker < ApplicationRecord
+end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  winemaker: one
+  magazine: one
+  position: MyString
+
+two:
+  winemaker: two
+  magazine: two
+  position: MyString

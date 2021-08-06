@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_06_004756) do
+ActiveRecord::Schema.define(version: 2021_08_06_013655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "magazines", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "strains", force: :cascade do |t|
     t.string "name"
@@ -33,6 +39,25 @@ ActiveRecord::Schema.define(version: 2021_08_06_004756) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "winemakers", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.string "nationality"
+    t.string "work"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "winemakers_magazines", force: :cascade do |t|
+    t.bigint "winemaker_id"
+    t.bigint "magazine_id"
+    t.string "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["magazine_id"], name: "index_winemakers_magazines_on_magazine_id"
+    t.index ["winemaker_id"], name: "index_winemakers_magazines_on_winemaker_id"
+  end
+
   create_table "wines", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -49,6 +74,8 @@ ActiveRecord::Schema.define(version: 2021_08_06_004756) do
     t.index ["wine_id"], name: "index_wines_strains_on_wine_id"
   end
 
+  add_foreign_key "winemakers_magazines", "magazines"
+  add_foreign_key "winemakers_magazines", "winemakers"
   add_foreign_key "wines_strains", "strains"
   add_foreign_key "wines_strains", "wines"
 end
