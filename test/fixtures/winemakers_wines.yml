@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  winemaker: one
+  wine: one
+  qualification: 1
+
+two:
+  winemaker: two
+  wine: two
+  qualification: 1

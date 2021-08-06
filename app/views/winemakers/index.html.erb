@@ -11,6 +11,8 @@
       <th>Work</th>
       <th>Magazine</th>
       <th>Position</th>
+      <th>Wine</th>
+      <th>Qualification</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -33,6 +35,17 @@
             <% winemaker.winemakers_magazines.each do |pg| %>
               <%= pg.position %>
             <% end %>
+        </td>
+
+        <td>
+          <% winemaker.wines.each do |pg| %>
+            <%= pg.name %>
+          <% end %>
+        </td>
+        <td>
+          <% winemaker.winemakers_wines.each do |pg| %>
+            <%= pg.qualification %>
+          <% end %>
         </td>
         <td><%= link_to 'Show', winemaker %></td>
         <td><%= link_to 'Edit', edit_winemaker_path(winemaker) %></td>

@@ -42,6 +42,17 @@
     <%= link_to_add_association 'Work', form, :winemakers_magazines %>
   </div>
 
+  <!-- #Muestra en el formulario de people los guesses disponibles -->
+  <div class="field" id="winemakers_wines">
+    <%= form.fields_for :winemakers_wines do |ff| %>
+      <%= render 'winemakers_wine_fields', f: ff %>
+    <% end %>
+  </div>
+  <!-- #crear una nueva guess - Formulario utilizado por cocoon-->
+  <div class="links">
+    <%= link_to_add_association 'Qualification', form, :winemakers_wines %>
+  </div>
+
 
   <div class="actions">
     <%= form.submit %>

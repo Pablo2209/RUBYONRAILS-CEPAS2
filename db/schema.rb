@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_06_013655) do
+ActiveRecord::Schema.define(version: 2021_08_06_021810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,16 @@ ActiveRecord::Schema.define(version: 2021_08_06_013655) do
     t.index ["winemaker_id"], name: "index_winemakers_magazines_on_winemaker_id"
   end
 
+  create_table "winemakers_wines", force: :cascade do |t|
+    t.bigint "winemaker_id"
+    t.bigint "wine_id"
+    t.integer "qualification"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["wine_id"], name: "index_winemakers_wines_on_wine_id"
+    t.index ["winemaker_id"], name: "index_winemakers_wines_on_winemaker_id"
+  end
+
   create_table "wines", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -76,6 +86,8 @@ ActiveRecord::Schema.define(version: 2021_08_06_013655) do
 
   add_foreign_key "winemakers_magazines", "magazines"
   add_foreign_key "winemakers_magazines", "winemakers"
+  add_foreign_key "winemakers_wines", "winemakers"
+  add_foreign_key "winemakers_wines", "wines"
   add_foreign_key "wines_strains", "strains"
   add_foreign_key "wines_strains", "wines"
 end

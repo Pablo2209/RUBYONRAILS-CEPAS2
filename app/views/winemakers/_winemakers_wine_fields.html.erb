@@ -1,0 +1,13 @@
+
+<div class="nested-fields">
+    <div class="field">
+        <%= f.label :wine_id %>
+        <%= f.collection_select :wine_id, @wines1, :id, :name %>
+    </div>
+    
+     <div class="field">
+        <%= f.label :qualification %>
+        <%= f.number_field :qualification %>
+    </div>
+    <%= link_to_remove_association "Not qualification", f %>
+</div>
