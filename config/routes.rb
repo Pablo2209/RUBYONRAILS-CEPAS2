@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :winemakers
   resources :strains
   resources :wines
-  devise_for :users
+  devise_for :users, :controller => { registrations: 'registration'}
 
   root 'wines#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
