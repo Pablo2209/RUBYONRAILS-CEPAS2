@@ -9,6 +9,9 @@ gem 'rails', '~> 5.2.6'
 gem 'pg', '>= 0.18', '< 2.0'
 #Intall devise
 gem 'devise'
+#Cocoon
+gem 'cocoon'
+gem 'jquery-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
