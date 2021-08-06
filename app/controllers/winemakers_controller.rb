@@ -13,10 +13,18 @@ class WinemakersController < ApplicationController
   # GET /winemakers/new
   def new
     @winemaker = Winemaker.new
+    #Relacion con la tabla N
+    @magazines = Magazine.all
+    #Relacion con la tabla INTERMEDIA
+    @winemaker.winemakers_magazines.build
   end
 
   # GET /winemakers/1/edit
   def edit
+    #Relacion con la tabla N
+    @magazines = Magazine.all
+    #Relacion con la tabla INTERMEDIA
+    @winemaker.winemakers_magazines.build
   end
 
   # POST /winemakers or /winemakers.json
@@ -64,6 +72,6 @@ class WinemakersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def winemaker_params
-      params.require(:winemaker).permit(:name, :age, :nationality, :work)
+      params.require(:winemaker).permit(:name, :age, :nationality, :work, {winemakers_magazines_attributes: [:id, :magazine_id, :position]})
     end
 end

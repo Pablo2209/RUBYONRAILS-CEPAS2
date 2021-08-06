@@ -31,6 +31,18 @@
     <%= form.text_field :work %>
   </div>
 
+  <!-- #Muestra en el formulario de people los guesses disponibles -->
+  <div class="field" id="winemakers_magazines">
+    <%= form.fields_for :winemakers_magazines do |ff| %>
+      <%= render 'winemakers_magazine_fields', f: ff %>
+    <% end %>
+  </div>
+  <!-- #crear una nueva guess - Formulario utilizado por cocoon-->
+  <div class="links">
+    <%= link_to_add_association 'Work', form, :winemakers_magazines %>
+  </div>
+
+
   <div class="actions">
     <%= form.submit %>
   </div>
