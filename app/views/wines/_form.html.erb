@@ -16,6 +16,17 @@
     <%= form.text_field :name %>
   </div>
 
+  <!-- #Muestra en el formulario de people los guesses disponibles -->
+  <div class="field" id="wines_strains">
+    <%= form.fields_for :wines_strains do |ff| %>
+      <%= render 'wines_strain_fields', f: ff %>
+    <% end %>
+  </div>
+  <!-- #crear una nueva guess - Formulario utilizado por cocoon-->
+  <div class="links">
+    <%= link_to_add_association 'New STRAIN', form, :wines_strains %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
