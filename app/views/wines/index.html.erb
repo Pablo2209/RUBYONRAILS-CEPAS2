@@ -41,8 +41,10 @@
             <% end %>
         </td>
         <td><%= link_to 'Show', wine %></td>
-        <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
-        <td><%= link_to 'Destroy', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user && current_user.editor %>
+          <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
+          <td><%= link_to 'Destroy', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -53,4 +55,4 @@
 <%= link_to 'New Wine', new_wine_path %>
 <%= link_to 'Create strains', strains_path %>
 <%= link_to 'Winemakers', winemakers_path %>
-<%= link_to 'Cerrar', destroy_user_session_path %>
+<%= link_to 'Cerrar', destroy_user_session_path, method: :delete %>
